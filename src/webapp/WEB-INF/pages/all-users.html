@@ -16,9 +16,23 @@
         <th>E-mail</th>
     </tr>
 
-<!--    <tr th:each="users : ${allUs}">-->
-
-<!--    </tr>-->
+    <tr th:each="users : ${allUs}">
+        <td><a th:href="@{'/' + ${users.getId()}}" th:utext="${users.getName()}">UserId</a></td>
+        <td th:utext="${users.getAge()}"></td>
+        <td th:utext="${users.getEmail()}"></td>
+        <td>
+            <form th:action="@{'edit/' + ${users.getId()}}">
+                <input type="submit" class="buttonEdit" value="Edit"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{'/' + ${users.getId()}}">
+                <input type="submit" class="buttonDelete" value="Delete"/>
+            </form>
+        </td>
+    </tr>
 </table>
+<br>
+<td><input type="button" value="Add" onclick="window.location.href = 'addNewUser'"/></td>
 </body>
 </html>
